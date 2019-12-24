@@ -5,11 +5,11 @@
 
 <h2>5 Steps</h2>
 
-*  ☑️: set up a model in a jupyter notebook or google colab ipynb</li>
-*  ☑️: create Flask app</li>
-*  ☑️: create a Procfile</li>
-*  ☑️: create requirments.txt</li>
-*  ☑️: deploy to heroku</li>
+☑️: set up a model in a jupyter notebook or google colab ipynb</li>
+☑️: create Flask app</li>
+☑️: create a Procfile</li>
+☑️: create requirments.txt</li>
+☑️: deploy to heroku</li>
 
 
 <h2>Notes</h2>
