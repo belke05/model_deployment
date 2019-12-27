@@ -1,6 +1,7 @@
 import flask, requests, pickle, joblib
 from flask_cors import CORS, cross_origin
 import numpy as np
+import json
 
 app = flask.Flask(__name__)
 
@@ -58,6 +59,15 @@ def makeAdmissionPrediction():
   print(prediction, 'predictions')
   return flask.jsonify({'prediction': prediction})
 
+
+@app.route("/retrieve_model", methods=['GET'])
+def returnModel():
+  # read file
+  with open('model.json', 'r') as myfile:
+      data=myfile.read()
+  # parse file
+  obj = json.loads(data)
+  return flask.jsonify(obj)
 
 
 if __name__ == '__main__':
