@@ -60,7 +60,7 @@ def makeAdmissionPrediction():
   return flask.jsonify({'prediction': prediction})
 
 
-@app.route("/retrieve_model", methods=['GET'])
+@app.route("/model.json", methods=['GET'])
 def returnModel():
   # read file
   with open('model.json', 'r') as myfile:
