@@ -69,6 +69,42 @@ def returnModel():
   obj = json.loads(data)
   return flask.jsonify(obj)
 
+@app.route("/group1-shard1of4.bin")
+def returnShard1():
+  with open('group1-shard1of4.bin', 'rb') as myshard:
+    data=myshard.read()
+    response = flask.make_response(data)
+    response.headers.set('Content-Type', 'application/octet-stream')
+    # response.headers.set('Content-Disposition', 'attachment', filename='np-array.bin')
+    return response
+
+@app.route("/group1-shard2of4.bin")
+def returnShard2():
+  with open('group1-shard2of4.bin', 'rb') as myshard:
+    data=myshard.read()
+    response = flask.make_response(data)
+    response.headers.set('Content-Type', 'application/octet-stream')
+    # response.headers.set('Content-Disposition', 'attachment', filename='np-array.bin')
+    return flask.send_file(myshard)
+
+@app.route("/group1-shard3of4.bin")
+def returnShard3():
+  with open('group1-shard3of4.bin', 'rb') as myshard:
+    data=myshard.read()
+    response = flask.make_response(data)
+    response.headers.set('Content-Type', 'application/octet-stream')
+    # response.headers.set('Content-Disposition', 'attachment', filename='np-array.bin')
+    return data
+
+@app.route("/group1-shard4of4.bin")
+def returnShard4():
+  with open('group1-shard4of4.bin', 'rb') as myshard:
+    data=myshard.read()
+    response = flask.make_response(data)
+    response.headers.set('Content-Type', 'application/octet-stream')
+    # response.headers.set('Content-Disposition', 'attachment', filename='np-array.bin')
+    return response
+  
 
 if __name__ == '__main__':
   app.run(debug=True, port=7000)
