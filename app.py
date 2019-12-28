@@ -2,13 +2,17 @@ import flask, requests, pickle, joblib
 from flask_cors import CORS, cross_origin
 import numpy as np
 import json
+from tensorflow import keras
+import api
+
 
 app = flask.Flask(__name__)
 
 # Load the model
 model = joblib.load("./linear_regression_model.pkl")
 classifier = joblib.load("./classifier.pkl")
-
+# load model
+rnn = keras.models.load_model('my_model.h5')
 
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -104,7 +108,13 @@ def returnShard4():
     response.headers.set('Content-Type', 'application/octet-stream')
     # response.headers.set('Content-Disposition', 'attachment', filename='np-array.bin')
     return response
-  
+
+@app.route("/predict-text", methods=['GET'])
+def helloworld():
+  start_string = flask.request.args.get('start-string')
+  outcome = api.predict_text(start_string, rnn)
+  print(outcome)
+  return flask.jsonify({'random_text': outcome})
 
 if __name__ == '__main__':
   app.run(debug=True, port=7000)
