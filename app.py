@@ -85,7 +85,7 @@ def returnShard2():
     response = flask.make_response(data)
     response.headers.set('Content-Type', 'application/octet-stream')
     # response.headers.set('Content-Disposition', 'attachment', filename='np-array.bin')
-    return flask.send_file(myshard)
+    return response
 
 @app.route("/group1-shard3of4.bin")
 def returnShard3():
